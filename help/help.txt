@@ -1,0 +1,41 @@
+Waterbottle help page
+
+#### Commands
+
+1. migrate
+2. name - eg Initial-0001
+3. UP/DOWN migration
+4. Database URL Address
+
+Example migrate command: ```waterbottle migrate initial_0001 UP username:password@tcp(127.0.0.1:3306)/testdb```
+
+1. help
+
+#### Migration files
+
+You should create 2 files one UP and one DOWN event
+example:
+
+initial_0001_UP.sql
+initial_0001_DOWN.sql
+
+
+UP file consist of either CREATE TABLE or ALTER TABLE queries
+DOWN file consist of rollback UP queries
+
+EXAMPLE:
+----
+
+initial_0001_UP.sql
+
+CREATE TABLE test (
+    ID int,
+    FirstName varchar(255),
+    LastName varchar(255)
+);
+
+----
+
+initial_0001_DOWN.sql
+
+DROP TABLE test;
